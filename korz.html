@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин</title>
+    <link rel="stylesheet" href="stylesKORZ.css">
+</head>
+<body>
+    <header>
+        <h1>Магазин</h1>
+        <div class="cart">
+            <h2>Корзина</h2>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-total" id="cartTotal">Итого: 0 Руб.</div>
+            <button class="checkout-button" id="checkoutButton">Оформить заказ</button>
+        </div>
+    </header>
+
+    <main>
+        <h2>Товары</h2>
+        <div class="product">
+            <h3>Товар 1</h3>
+            <p>Цена: 100 Руб.</p>
+            <button class="add-to-cart" onclick="addToCart('Товар 1', 100)">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <h3>Товар 2</h3>
+            <p>Цена: 200 Руб.</p>
+            <button class="add-to-cart" onclick="addToCart('Товар 2', 200)">Добавить в корзину</button>
+        </div>
+        <!-- Добавьте больше товаров по желанию -->
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
