@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velex Регистрация и Авторизация</title>
+    <link rel="stylesheet" href="styleAUTH.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script>
+        let isRegistering = true; 
+        let isResettingPassword = false; 
+        let verificationCode = Math.floor(1000 + Math.random() * 9000); 
+
+        function toggleForm() {
+            if (isResettingPassword) {
+                isResettingPassword = false;
+                document.getElementById('resetPasswordForm').style.display = 'none';
+            } else {
+                isRegistering = !isRegistering;
+                document.getElementById('formTitle').innerText = isRegistering ? 'Регистрация Velex  ' : 'Авторизация Velex  ';
+                document.getElementById('registerFields').style.display = isRegistering ? 'block' : 'none';
+                document.getElementById('loginFields').style.display = isRegistering ? 'none' : 'block';
+                document.getElementById('submitButton').innerText = isRegistering ? 'Зарегистрироваться' : 'Войти';
+                document.getElementById('toggleButton').innerText = isRegistering ? 'Войти' : 'Зарегистрироваться';
+            }
+        }
+
+        function openResetPasswordForm() {
+            isResettingPassword = true;
+            document.getElementById('resetPasswordForm').style.display = 'block';
+            document.getElementById('authForm').style.display = 'none';
+        }
+
+        function registerUser(event) {
+            event.preventDefault();
+            const phone = document.getElementById('regPhone').value;
+            const password = document.getElementById('regPassword').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(user => user.phone === phone);
+
+            if (userExists) {
+                alert("Пользователь с таким номером уже зарегистрирован.");
+            } else {
+                users.push({ phone, password });
+                localStorage.setItem('users', JSON.stringify(users));
+                alert("Регистрация прошла успешно! Теперь вы можете войти.");
+                toggleForm();
+            }
+        }
+
+        function loginUser(event) {
+            event.preventDefault();
+            const phone = document.getElementById('loginPhone').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(user => user.phone === phone && user.password === password);
+
+            if (userExists) {
+                alert("Авторизация прошла успешно!");
+                window.location.href = "shop.html"; 
+            } else {
+                alert("Неверный номер телефона или пароль.");
+            }
+        }
+
+        function resetPassword(event) {
+            event.preventDefault();
+            const phone = document.getElementById('resetPhone').value;
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            const userExists = users.some(user => user.phone === phone);
+            if (userExists) {
+                const userCode = prompt(`Введите код для подтверждения (код: ${verificationCode}):`);
+                if (userCode === verificationCode.toString()) {
+                    const newPassword = prompt("Введите новый пароль:");
+                    
+                    const userIndex = users.findIndex(user => user.phone === phone);
+                    users[userIndex].password = newPassword; 
+                    localStorage.setItem('users', JSON.stringify(users));
+                    alert("Пароль успешно изменен!");
+                    toggleForm(); 
+                    document.getElementById('resetPasswordForm').style.display = 'none'; 
+                    document.getElementById('authForm').style.display = 'block';
+                } else {
+                    alert("Неверный код подтверждения.");
+                }
+            } else {
+                alert("Пользователь с таким номером не найден.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <form id="authForm" onsubmit="isRegistering ? registerUser(event) : loginUser(event)">
+            <h1 id="formTitle">Регистрация</h1>
+
+            <div id="registerFields">
+                <div class="input box">
+                    <div class="input-box">
+                        <input type="text" id="regPhone" placeholder="Номер телефона" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="regPassword" placeholder="Пароль" required>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loginFields" style="display:none;">
+                <div class="input box">
+                    <div class="input-box">
+                        <input type="text" id="loginPhone" placeholder="Номер телефона" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="loginPassword" placeholder="Пароль" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="register-link">
+                <button type="submit" class="btn" id="submitButton">Зарегистрироваться</button>
+            </div>
+
+            <div class="toggle-link">
+                <button type="button" id="toggleButton" onclick="toggleForm()">Войти</button>
+            </div>
+
+            <div class="toggle-link">
+                <button type="button" onclick="openResetPasswordForm()">Забыли пароль?</button>
+            </div>
+        </form>
+
+        <!-- Форма для сброса пароля -->
+        <form id="resetPasswordForm" style="display:none;" onsubmit="resetPassword(event)">
+            <h1>Сброс пароля</h1>
+            <div class="input box">
+                <div class="input-box">
+                    <input type="text" id="resetPhone" placeholder="Номер телефона для сброса пароля" required>
+                </div>
+            </div>
+            <div class="register-link">
+                <button type="submit" class="btn">Сбросить пароль</button>
+            </div>
+            <div class="toggle-link">
+                <button type="button" onclick="toggleForm()">Назад к авторизации</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

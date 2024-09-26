@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-image: url('https://media.istockphoto.com/id/1402134774/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%BF%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D1%88%D0%BE%D1%81%D1%81%D0%B5%D0%B9%D0%BD%D1%8B%D0%B9-%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%81%D1%82-%D0%BD%D0%B0-%D1%82%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B5.jpg?s=612x612&w=0&k=20&c=M4p0LXHz1x1ujAnzzP4cIXbqC7mMp75-T57yyA3_Plc=')
+  }
+  body{
+    color: #520000;
+  }
+  .container{
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://img.freepik.com/premium-photo/mtb-mountain-bike-riding-dramatic-shot-adrenaline-sport_106547-427.jpg);
+    background-position: center;
+    background-size: cover;
+    padding-top: 35px;
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+  nav{
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo a{
+    font-size: 40px;
+    text-decoration: none;
+  }
+  span{
+    color: #ff0000;
+  }
+  nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 15px;
+  }
+  nav ul li a{
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  nav ul li a:hover{
+    color: #000000;
+  }
+  
+  .btn{
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 9px 25px;
+    text-decoration: none;
+    transition: 0.5s;
+    font-size: 18px;
+  }
+  .content{
+    margin-top: 2%;
+    max-width: 600px;
+    color: #fcefef;
+  }
+  .content h2{
+    font-size: 60px
+  }
+  .content p{
+    margin-top: 10px;
+    line-height: 25px;
+  }
+  a{
+    color: #000000;
+  }
+  .link {
+    margin-top: 30px;
+  }
+  .hire{
+    color: #000;
+    text-decoration: none;
+    background: #fff;
+    padding: 9px 25px;   
+    font-weight: bold;
+    border-radius: 6px;
+    transition: 0.5s;
+  }
+  .link .hire:hover{
+    background: transparent;
+    border: 1px solid #fcefef;
+    color: #ffffff;
+  }
+  .login{
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 20px;
+  }
+  .login{
+    color: #000;
+    text-decoration: none;
+    background: #fff;
+    padding: 9px 25px;   
+    font-weight: bold;
+    border-radius: 6px;
+    transition: 0.5s;
+  } 
+  .buttons .login:hover{
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+  }
+  .kontakss{
+    color: #000;
+    text-decoration: none;
+    background: #fff;
+    padding: 9px 25px;   
+    font-weight: bold;
+    border-radius: 6px;
+    transition: 0.5s;
+  } 
+  .kontakss{
+    text-decoration: none;
+    /* margin-top: 40px; */
+    font-size: 20px;
+  }
+  
+  .buttons .kontakss:hover{
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+  }
+  .kontaks {
+    /* margin-top: -550px; */
+  }
+  
+  .buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
