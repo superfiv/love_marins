@@ -6,6 +6,98 @@
     font-family: 'Arial', sans-serif;
 }
 
+.container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  /* Header */
+  header {
+    background-color: #222;
+    color: #fff;
+    padding: 40px 0;
+  }
+  
+  header .velex-button h1 {
+    font-size: 1.8em;
+    font-weight: 600;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  nav ul li {
+    margin-left: 20px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #f39c12;
+  }
+
+.logotext h2 {
+    color: aqua
+}
+.velex-button {
+    position: absolute;
+    top: 20px; /* Расстояние сверху */
+    left: 20px; /* Расстояние слева */
+    background: linear-gradient(45deg, #6f00ff, #00c3ff);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000; /* Кнопка поверх всего */
+  }
+  
+  .velex-button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.5s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  
+  .velex-button:hover:before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .velex-button:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .velex-button span {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+    opacity: 0.8;
+  }
+  .velex-button {
+    text-decoration: none;
+  }
+  
 body {
     background: linear-gradient(to right, #141414, #2c2c2c);
     color: #cccccc;
